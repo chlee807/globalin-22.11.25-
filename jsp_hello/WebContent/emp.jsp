@@ -25,7 +25,7 @@
 	    String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	    String uid = "scott";
 	    String upw = "tiger";
-	    String query = "select * from emp";
+	    String query = "SELECT * FROM EMP";
 	    
 	    out.print("<table><tr>");
 	    out.print("<th>사원번호</th><th>이름</th><th>직종</th><th>매니저</th><th>입사일</th><th>연봉</th><th>상여금</th><th>부서번호</th>");
@@ -46,14 +46,15 @@
 	    		String comm = resultSet.getString("comm");
 	    		String deptno = resultSet.getString("deptno");
 	    		
-	    		out.print("<tr><td>" + empno + "</td>" + 
-	    				"<td>" + ename + "</td>" +
-	    				"<td>" + job + "</td>" +
-	    				"<td>" + mgr + "</td>" +
-	    				"<td>" + hiredate + "</td>" +
-	    				"<td>" + sal + "</td>" +
-	    				"<td>" + comm + "</td>" +
-	    				"<td>" + deptno + "</td></tr>");
+	    		out.print("<tr><td>" + empno + "</td>" 
+	    					+"<td>" + ename + "</td>"
+	    					+"<td>" + job + "</td>"
+	    					+"<td>" + mgr + "</td>"
+	    					+"<td>" + hiredate + "</td>"
+	    					+"<td>" + sal + "</td>"
+	    					+"<td>" + comm + "</td>"
+	    					+"<td>" + deptno + "</td>"
+	    					+"</tr>");
 	    	}
 	    	out.print("</table>");
 	    }catch(Exception e) {

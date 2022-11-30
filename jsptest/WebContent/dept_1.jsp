@@ -10,9 +10,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	table{ border: 1px solid black; text-align: center; margin: 30px auto;}
-	th{ border: 1px solid black;}
-	td{ border: 1px solid black;}
+	table { border: 1px solid black; text-align: center; margin: 30px auto; }
+	th { border: 1px solid black;}
+	td { border: 1px solid black;}
 </style>
 </head>
 <body>
@@ -28,9 +28,9 @@
 	    String query = "SELECT * FROM DEPT";
 	    
 	    out.print("<table><tr>");
-	    out.print("<th>부서번호</th><th>부서명</th><th>위치</th>");
-	    out.print("</tr>");
-	    
+		out.print("<th>부서번호</th><th>부서명</th><th>위치</th>");
+		out.print("</tr>");
+		
 	    try {
 	    	Class.forName(driver); // 객체생성
 	    	connection = DriverManager.getConnection(url,uid,upw);
@@ -42,10 +42,10 @@
 	    		String dname = resultSet.getString("dname");
 	    		String loc = resultSet.getString("loc");
 	    		
-	    		out.print("<tr><td>" + deptno + "</td>" 
-    					+"<td>" + dname + "</td>"
-    					+"<td>" + loc + "</td>"
-    					+"</tr>");
+	    		out.print("<tr><td>" + deptno + "</td>"
+						+ "<td>" + dname + "</td>"
+						+ "<td>" + loc + "</td>"
+						+ "</tr>");
 	    	}
 	    	out.print("</table>");
 	    }catch(Exception e) {
