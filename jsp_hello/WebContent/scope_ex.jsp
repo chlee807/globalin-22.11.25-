@@ -13,8 +13,8 @@
 <%
 	application.setAttribute("application_name", "application_value");
 	session.setAttribute("session_name", "session_value");
-	pageContext.setAttribute("page_name", "page_value");
 	request.setAttribute("request_name", "request_value");
+	pageContext.setAttribute("page_name", "page_value");
 %>
 </body>
 </html>

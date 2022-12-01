@@ -22,7 +22,8 @@ public class EmpDTO {
 	private String comm;
 	private int deptno;
 
-	public EmpDTO() {}
+	public EmpDTO() {
+	}
 
 	public EmpDTO(int empno, String ename, String job, int mgr, String hiredate, int sal, String comm, int deptno) {
 		this.empno = empno;
