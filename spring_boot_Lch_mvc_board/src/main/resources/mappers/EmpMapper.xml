@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.global.ex.mapper.EmpMapper">
+
+	<!-- 컬럼과 데이타베이스 매핑 -->
+	 <resultMap id="empMap" type="EmpVO">
+      <id property="empno" column="empno"/>		<!-- 기본키 표시 id -->
+      <result property="ename" column="ename"/>
+      <result property="job" column="job"/>
+      <result property="mgr" column="mgr"/>
+      <result property="hiredate" column="hiredate"/>
+      <result property="sal" column="sal"/>
+      <result property="comm" column="comm"/>
+      <result property="deptno" column="deptno"/>      
+   </resultMap>
+	
+	<resultMap id="deptMap" type="DeptVO">
+       <result property="deptno" column="deptno"/>
+       <result property="dname" column="dname"/>
+       <result property="loc" column="loc"/>
+      <collection property="empList" resultMap="empMap"></collection>
+      <!-- association은 1:1일 때 사용, collection은 1:n일 때 사용 --> 
+   </resultMap>
+   
+   <select id="getList" resultType="edu.global.ex.vo.EmpVO">
+   		
+   		<![CDATA[
+   			select * from emp
+   		]]>
+   		
+   </select> 
+    
+     <!-- mybatis.type-aliases-package=edu.global.ex.vo.EmpVO -->
+   <select id="read" resultType="EmpVO">
+   		
+   		<![CDATA[
+   			select * from Emp where empno = #{empno}
+   		]]>
+   		
+   </select>
+   
+   <select id="getTotalCount" resultType="int">
+   		
+   		<![CDATA[
+   			select count(*) from emp
+   		]]>
+   		
+   </select>
+   
+   <select id="getListWithPaging" resultType="EmpVO">
+      <![CDATA[
+        SELECT * FROM (
+              SELECT ROWNUM AS RNUM, A.* FROM (
+                       SELECT * FROM emp order by empno
+             ) A WHERE ROWNUM <= #{pageNum} * #{amount}
+         ) WHERE RNUM > (#{pageNum}-1) * #{amount}
+      ]]>
+   </select>
+   
+   <select id="getDeptEmpList" resultMap="deptMap">
+   		
+   		<![CDATA[
+   			SELECT * FROM EMP, DEPT WHERE EMP.DEPTNO = DEPT.DEPTNO
+   		]]>
+   		
+   </select>
+</mapper>
